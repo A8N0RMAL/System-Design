@@ -36,12 +36,14 @@ Choosing the right database is critical and depends on your data structure and c
 * Represents a single point of failure: if the machine crashes, the entire system goes down.
 <img width="2752" height="1536" alt="verticlescaling" src="https://github.com/user-attachments/assets/887c25e6-7bba-4513-b528-9890998272b2" />
 
+---
 ### 2. Horizontal Scaling (Scaling Out)
 * Adding more machines of the same size and distributing the load among them.
 * Requires a load balancer to efficiently distribute incoming requests.
 * Avoids the single point of failure problem inherent in vertical scaling.
 <img width="2752" height="1536" alt="horizontalscaling" src="https://github.com/user-attachments/assets/8f49de03-290f-453e-92a0-3cfa3898b9a4" />
 
+---
 ### 3. Load Balancer
 * Acts as the traffic distributor, routing requests to multiple backend servers.
 * Backend servers reside on a private network and are not directly accessible to users.
@@ -49,6 +51,7 @@ Choosing the right database is critical and depends on your data structure and c
 * Health checks (heartbeat protocol) continuously monitor server availability and reroute traffic if a server is down.
 <img width="2752" height="1536" alt="loadbalancer" src="https://github.com/user-attachments/assets/646361d8-8bc9-4c8a-a70e-61e32fe980d8" />
 
+---
 ### 4. Database Scaling Challenges
 * As the number of servers increases, the database can become a bottleneck due to limited connections and resource constraints.
 * Vertical scaling of databases has similar limitations as servers.
@@ -61,8 +64,53 @@ Choosing the right database is critical and depends on your data structure and c
 * Concepts of consistency and event propagation are critical and have been explained in detail in the creator’s previous series.
 <img width="2752" height="1536" alt="databasereplication" src="https://github.com/user-attachments/assets/29ef4170-3ec2-405d-b71e-796bc3f28cab" />
 
+---
 ### 6. High Availability and Fault Tolerance
 * Achieved through horizontal scaling, load balancer clustering, and database replication.
 * Systems can continue operating smoothly even if individual components fail.
+
+---
+
+## Caching in System Design
+
+* **Replication**: Multiple copies of the database are maintained to handle increased load.
+* **Caching**: Introduced as a memory-based layer (e.g., using Redis) placed between web servers and databases to store frequently or recently accessed data in RAM, which is faster than disk reads.
+
+### Cache Operation:
+1. Queries first check the cache.
+2. On a cache hit, data is returned immediately.
+3. On a cache miss, data is fetched from the database, cached, and then returned.
+
+### Benefits of Caching:
+* Reduces database query load.
+* Improves response time due to faster memory access.
+<img width="1863" height="1041" alt="Screenshot 2025-12-08 213149" src="https://github.com/user-attachments/assets/74af0ff2-8045-436c-b672-3deb2549b128" />
+
+---
+### Cache Write Strategies:
+* Write-Behind: Write to cache first, then database. Fast response but risk of data loss if write to database fails.
+* Write-Around: Write to database first, then update cache asynchronously. Avoids data loss but may serve stale data temporarily.
+* Write-Through: Write to both cache and database simultaneously. Suitable when data size is small or cost of RAM is a concern.
+<img width="1036" height="1079" alt="Screenshot 2025-12-08 213300" src="https://github.com/user-attachments/assets/c87d1b47-8469-4309-8503-ad01ec61114c" />
+
+---
+### Cache Limitations:
+* RAM size limits data stored in cache; primary data must reside on disk.
+* Cache data can become stale if not properly managed.
+
+---
+### Cache Eviction and Expiration Policies:
+* Expiration Policy: Cached data has a time-to-live (TTL) to prevent serving outdated data.
+* Retention (Eviction) Policy: When cache is full, remove data based on usage patterns:
+  * Time-based: Remove data not accessed recently.
+  * LFU (Least Frequently Used): Remove data accessed least often.
+  * LRU (Least Recently Used): Remove data least recently accessed.
+  * LFRU: A hybrid method combining LFU and LRU.
+<img width="1919" height="975" alt="Screenshot 2025-12-08 213550" src="https://github.com/user-attachments/assets/8540a757-d045-4ea0-8200-7c5fa3170ea8" />
+
+---
+### Cache Failure Handling:
+* If cache fails, all requests fall back to the database, which may cause performance degradation or system crashes under heavy load.
+* To mitigate this, multiple cache clusters and tuning are recommended.
 
 ---

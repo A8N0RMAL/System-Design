@@ -31,38 +31,38 @@ Choosing the right database is critical and depends on your data structure and c
 ## Scaling Strategies & High Availability Architecture
 
 ### 1. Vertical Scaling (Scaling Up)
-Increasing the capacity of a single machine by upgrading hardware components such as CPU, RAM, and disk.
-Easy to implement but limited by the maximum capacity of the machine.
-Represents a single point of failure: if the machine crashes, the entire system goes down.
+* Increasing the capacity of a single machine by upgrading hardware components such as CPU, RAM, and disk.
+* Easy to implement but limited by the maximum capacity of the machine.
+* Represents a single point of failure: if the machine crashes, the entire system goes down.
 <img width="2752" height="1536" alt="verticlescaling" src="https://github.com/user-attachments/assets/887c25e6-7bba-4513-b528-9890998272b2" />
 
 ### 2. Horizontal Scaling (Scaling Out)
-Adding more machines of the same size and distributing the load among them.
-Requires a load balancer to efficiently distribute incoming requests.
-Avoids the single point of failure problem inherent in vertical scaling.
+* Adding more machines of the same size and distributing the load among them.
+* Requires a load balancer to efficiently distribute incoming requests.
+* Avoids the single point of failure problem inherent in vertical scaling.
 <img width="2752" height="1536" alt="horizontalscaling" src="https://github.com/user-attachments/assets/8f49de03-290f-453e-92a0-3cfa3898b9a4" />
 
 ### 3. Load Balancer
-Acts as the traffic distributor, routing requests to multiple backend servers.
-Backend servers reside on a private network and are not directly accessible to users.
-Load balancers themselves can be a single point of failure; this is mitigated by clustering multiple balancers with one active and others as failovers.
-Health checks (heartbeat protocol) continuously monitor server availability and reroute traffic if a server is down.
+* Acts as the traffic distributor, routing requests to multiple backend servers.
+* Backend servers reside on a private network and are not directly accessible to users.
+* Load balancers themselves can be a single point of failure; this is mitigated by clustering multiple balancers with one active and others as failovers.
+* Health checks (heartbeat protocol) continuously monitor server availability and reroute traffic if a server is down.
 <img width="2752" height="1536" alt="loadbalancer" src="https://github.com/user-attachments/assets/646361d8-8bc9-4c8a-a70e-61e32fe980d8" />
 
 ### 4. Database Scaling Challenges
-As the number of servers increases, the database can become a bottleneck due to limited connections and resource constraints.
-Vertical scaling of databases has similar limitations as servers.
+* As the number of servers increases, the database can become a bottleneck due to limited connections and resource constraints.
+* Vertical scaling of databases has similar limitations as servers.
 
 ### 5. Database Replication and Leader-Follower Model
-Commonly uses the Leader (Master) - Follower (Slave) replication model.
-The leader handles write operations and propagates changes to follower replicas.
-Followers handle read operations, improving read scalability and availability.
-If a follower fails, it can be replaced without affecting the system.
-Concepts of consistency and event propagation are critical and have been explained in detail in the creator’s previous series.
+* Commonly uses the Leader (Master) - Follower (Slave) replication model.
+* The leader handles write operations and propagates changes to follower replicas.
+* Followers handle read operations, improving read scalability and availability.
+* If a follower fails, it can be replaced without affecting the system.
+* Concepts of consistency and event propagation are critical and have been explained in detail in the creator’s previous series.
 <img width="2752" height="1536" alt="databasereplication" src="https://github.com/user-attachments/assets/29ef4170-3ec2-405d-b71e-796bc3f28cab" />
 
 ### 6. High Availability and Fault Tolerance
-Achieved through horizontal scaling, load balancer clustering, and database replication.
-Systems can continue operating smoothly even if individual components fail.
+* Achieved through horizontal scaling, load balancer clustering, and database replication.
+* Systems can continue operating smoothly even if individual components fail.
 
 ---

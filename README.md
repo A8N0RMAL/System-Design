@@ -114,3 +114,18 @@ Choosing the right database is critical and depends on your data structure and c
 * To mitigate this, multiple cache clusters and tuning are recommended.
 
 ---
+
+## Caching and CDN
+* **CDN(Content Delivery Network)** acts as a geographically distributed caching layer that speeds up file delivery by serving files(static files (e.g. , images, videos, javascript or css files)) from the nearest server to the user.
+
+### Cache Invalidation and TTL
+* Explanation of how cached files persist until they expire or are renamed (e.g., by appending timestamps).
+* Use of HTTP cache-control headers to specify TTL (Time To Live), which determines how long a file remains cached before expiration.
+<img width="1919" height="1030" alt="Screenshot 2025-12-08 222209" src="https://github.com/user-attachments/assets/200d85e2-d1f9-49fa-8b6a-ef4d21e287b9" />
+
+---
+### Challenges with CDN
+* Dependence on external services such as Amazon CloudFront or Cloudflare, which can be costly and introduce risks related to third-party reliance.
+* After cache expiration, the CDN requires permission from the origin server to fetch updated files, which can affect update speed.
+
+---

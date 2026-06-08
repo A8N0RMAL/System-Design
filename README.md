@@ -60,7 +60,8 @@ Choosing the right database is critical and depends on your data structure and c
 * Commonly uses the Leader (Master) - Follower (Slave) replication model.
 * The leader handles write operations and propagates changes to follower replicas.
 * Followers handle read operations, improving read scalability and availability.
-* If a follower fails, it can be replaced without affecting the system.
+* If a follower fails, it can be replaced with another follwer replica without affecting the system via Catch-up Recovery technique.
+* If the Leader fails, it can be replaced with a follwer replica via Failover technique.
 * Concepts of consistency and event propagation are critical and have been explained in detail in the creator’s previous series.
 <img width="2752" height="1536" alt="databasereplication" src="https://github.com/user-attachments/assets/29ef4170-3ec2-405d-b71e-796bc3f28cab" />
 

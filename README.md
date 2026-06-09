@@ -85,7 +85,7 @@ Choosing the right database is critical and depends on your data structure and c
 ### Benefits of Caching:
 * Reduces database query load.
 * Improves response time due to faster memory access.
-<img width="1863" height="1041" alt="Screenshot 2025-12-08 213149" src="https://github.com/user-attachments/assets/74af0ff2-8045-436c-b672-3deb2549b128" />
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/b45b7f34-4946-4592-b4ea-4823eeab84a9" />
 
 ---
 ### Cache Write Strategies:
@@ -122,7 +122,7 @@ Choosing the right database is critical and depends on your data structure and c
 ### Cache Invalidation and TTL
 * Explanation of how cached files persist until they expire or are renamed (e.g., by appending timestamps).
 * Use of HTTP cache-control headers to specify TTL (Time To Live), which determines how long a file remains cached before expiration.
-<img width="1919" height="1030" alt="Screenshot 2025-12-08 222209" src="https://github.com/user-attachments/assets/200d85e2-d1f9-49fa-8b6a-ef4d21e287b9" />
+<img width="1134" height="295" alt="image" src="https://github.com/user-attachments/assets/d944a808-f6bd-4c85-b78d-cb7497a090e2" />
 
 ---
 ### Challenges with CDN

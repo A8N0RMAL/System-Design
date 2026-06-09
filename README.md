@@ -12,7 +12,7 @@ A scalable application typically involves these core components in its flow:
 3.  **Web Server:** Handles HTTP requests and serves responses (HTML, JSON, etc.).
 4.  **Database:** Stores and retrieves data, with a discussion on different database types.
 
-## 💾 Database Selection Guide
+## Database Selection Guide
 Choosing the right database is critical and depends on your data structure and consistency requirements.
 
 | Database Type | Ideal Use Case | Key Characteristics | Examples |

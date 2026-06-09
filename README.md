@@ -1,10 +1,10 @@
 # System Design Fundamentals: Scaling from Zero to Millions
 This guide outlines the foundational journey of designing a system that evolves from a simple prototype to a platform serving millions.
 
-## 🎯 Core Philosophy
+## Core Philosophy
 Effective system design starts with asking the right questions and understanding the trade-offs (pros/cons) of available technologies. The primary driver for architectural change is **user growth**—a system for 100 users will not suffice for millions.
 
-## 🏗️ System Architecture Overview
+## System Architecture Overview
 A scalable application typically involves these core components in its flow:
 
 1.  **Frontend:** The user interface (Web/Mobile App) initiating requests.
